@@ -1,0 +1,3 @@
+export Class Deck{
+    cards
+}
