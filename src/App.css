@@ -1,1 +1,9 @@
+.card{
+    border: 1px solid black;
+    width: 50px;
+}
 
+.hand{
+    display: flex;
+    margin: 10px 0;
+}

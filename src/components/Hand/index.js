@@ -1,29 +1,39 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Card from '../../api/Blackjack/Card';
+import Card from '../Card';
 
 class Hand extends Component {
     constructor(props){
         super(props);
 
         this.state = {
+            cards: []
+        }
+
+        this.renderCards = this.renderCards.bind(this);
+    }
+
+    static getDerivedStateFromProps(props, state){
+        if (props.hand !== state.cards){
+            state.cards = props.hand;
+        }
+        return state;
+    }
+
+    renderCards(){
+        for (var i = 0; i < this.state.cards.length; i++){
+
         }
     }
-    componentDidUpdate(){
-        console.log('update');
-    }
+
     render(){
         return (
-            <div>
-                Hand: {this.props.player.value}<button onClick={() => { console.log(this.props) }}>Props</button>
+            <div className="hand">
+                {this.state.cards.map((card, index) => (
+                    <Card card={card} key={index}/>
+                ))}
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-    };
-}
-
-export default connect(mapStateToProps)(Hand);
+export default Hand;

@@ -9,7 +9,7 @@ export default class Deck{
         this._count = 0;
 
         const suits = ['Hearts', 'Spades', 'Diamonds', 'Clubs'];
-        const values = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10];
+        const values = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10];
         const names = ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King'];
 
         for (var i = 0; i < num; i++){
