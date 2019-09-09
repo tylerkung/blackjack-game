@@ -133,9 +133,8 @@ class Game extends Component {
         var dealerAces = dealerHand.ace;
         var dealerValue = dealerHand.value;
 
-        while (dealerValue < 17 || dealerAces == 2){ // hit if less than 17, or if pocket aces
+        while (dealerValue < 17 || dealerAces === 2){ // hit if less than 17, or if pocket aces
             dealerHand = this.dealCard(dealerHand);
-            console.log(dealerHand);
             dealerAces = dealerHand.ace;
             dealerValue = dealerHand.value;
             if (dealerValue > 21 && dealerAces > 0){
@@ -150,6 +149,7 @@ class Game extends Component {
                 aces: dealerAces
             }
         });
+
         if (dealerHand.value > 21){
             this.setState({result: "Win!"});
             this.gameReset();
@@ -204,8 +204,6 @@ class Game extends Component {
                     stay={this.stay}
                     gameActive={this.state.playerAction}
                 />
-
-                <button onClick={() => {console.log(this.state.deck)}}>View Deck</button>
             </div>
         );
     }
