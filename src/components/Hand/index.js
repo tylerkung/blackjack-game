@@ -9,7 +9,6 @@ class Hand extends Component {
             cards: []
         }
 
-        this.renderCards = this.renderCards.bind(this);
     }
 
     static getDerivedStateFromProps(props, state){
@@ -19,15 +18,9 @@ class Hand extends Component {
         return state;
     }
 
-    renderCards(){
-        for (var i = 0; i < this.state.cards.length; i++){
-
-        }
-    }
-
     render(){
         return (
-            <div className="hand">
+            <div className={"hand " + (this.props.dealer ? 'dealer' : '')}>
                 {this.state.cards.map((card, index) => (
                     <Card card={card} key={index}/>
                 ))}
