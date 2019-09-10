@@ -149,7 +149,7 @@ class Game extends Component {
             this.lose();
             this.gameReset();
         } else{
-            this.dealer();
+            setTimeout((scope) => { scope.dealer() }, 1000, this);
         }
     }
 
