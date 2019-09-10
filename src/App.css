@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,500&display=swap');
 
 body{
     background: #102131;
@@ -12,13 +12,18 @@ body{
 button{
     font-family: 'Lato', Arial, Helvetica;
     padding: 20px 10px;
-    border-radius: 4px;
+    border-radius: 8px;
     border: 0;
     font-weight: 500;
     font-size: 16px;
 }
 button:disabled{
     background-color: #eee;
+}
+
+button:focus, input:focus{
+    outline: none;
+    box-shadow: 0px 0px 20px 0px #58a7ff;
 }
 
 .btn-deal{

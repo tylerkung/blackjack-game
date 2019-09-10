@@ -24,6 +24,7 @@ class Game extends Component {
             },
             bet: 0,
             bankroll: 1000,
+            double: 1,
             doubleEligible: true,
             splitEligible: false,
             playerAction: false,
@@ -51,7 +52,7 @@ class Game extends Component {
 
     dealGame(){
         if (this.state.bet < 10){
-            alert("Minimum bet is $10");
+            this.setState({result: "Minimum bet is 10"});
             return;
         }
         if (!this.state.deck){
@@ -143,12 +144,18 @@ class Game extends Component {
 
     stay(){
         this.setState({playerAction: false});
-        this.dealer();
+        if (this.state.player.value > 21){
+            this.setState({result: "Lose!"});
+            this.lose();
+            this.gameReset();
+        } else{
+            this.dealer();
+        }
     }
 
     double(){
         this.setState({
-            bet: this.state.bet * 2,
+            double: 2,
             doubleEligible: false
         });
         this.hit();
@@ -228,11 +235,11 @@ class Game extends Component {
     }
 
     win(){
-        var add = this.state.bankroll + this.state.bet;
+        var add = this.state.bankroll + (this.state.bet * this.state.double);
         this.setState({bankroll: add})
     }
     lose(){
-        this.setState({bankroll: (this.state.bankroll - this.state.bet)})
+        this.setState({bankroll: (this.state.bankroll - (this.state.bet * this.state.double))})
     }
     push(){
 
