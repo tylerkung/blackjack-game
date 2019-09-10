@@ -22,11 +22,11 @@ class Interface extends Component {
 
     render(){
         return (
-            <div>
-                <button onClick={this.props.deal} disabled={this.state.gameActive}>Deal</button>
-                <button onClick={this.props.stay} disabled={!this.state.gameActive}>Stay</button>
-                <button onClick={this.props.hit} disabled={!this.state.gameActive}>Hit</button>
-                <button onClick={this.props.double} disabled={!this.state.gameActive || !this.state.doubleEligible}>Double</button>
+            <div className="bj-interface">
+                <button className="btn btn-deal" onClick={this.props.deal} disabled={this.state.gameActive}>Deal</button>
+                <button className="btn btn-stay" onClick={this.props.stay} disabled={!this.state.gameActive}>Stay</button>
+                <button className="btn btn-hit" onClick={this.props.hit} disabled={!this.state.gameActive}>Hit</button>
+                <button className="btn btn-double" onClick={this.props.double} disabled={!this.state.gameActive || !this.state.doubleEligible}>Double</button>
                 <form action="">
                     <input type="number" name="bet" value={this.props.bet} onChange={this.props.betChange} disabled={this.state.gameActive} />
                     Bankroll: ${this.props.bankroll}

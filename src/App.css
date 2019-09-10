@@ -1,13 +1,209 @@
-.card{
-    border: 1px solid black;
-    width: 50px;
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+body{
+    background: #102131;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    height: 100%;
+    overflow: auto;
+    line-height: 1;
+    position: relative;
+    color: #fff;
+}
+button{
+    font-family: 'Lato', Arial, Helvetica;
+    padding: 20px 10px;
+    border-radius: 4px;
+    border: 0;
+    font-weight: 500;
+    font-size: 16px;
+}
+button:disabled{
+    background-color: #eee;
 }
 
+.btn-deal{
+    background-color: #58a7ff;
+}
+.btn-stay{
+    background-color: #ff2a6d;
+    color: #fff;
+}
+.btn-hit{
+    background-color: #00ceb8;
+}
+.btn-double{
+    background-color: #ffae58;
+}
+.bj-game{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.card{
+    margin: 0 -10px;
+    background-color: transparent;
+    border-radius: 10px;
+    height: 140px;
+    width: 97px;
+    background-image: url('./images/cards.gif');
+    background-size: 1250px;
+}
+
+.result{
+    min-height: 20px;
+    text-align: center;
+}
 .hand{
     display: flex;
     margin: 10px 0;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
 }
 
 .player-turn .hand.dealer .card:nth-of-type(2){
-    background-color: #000;
+    background-position: 0px 140px;
+}
+
+.bj-interface{
+    width: 100%;
+    display: flex;
+    bottom: 0;
+    padding-bottom: 100px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.bj-interface button{
+    width: 23%;
+}
+
+.bj-interface form{
+    margin: 25px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.bj-interface form input{
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 50px;
+    border: 0;
+    margin: 0 25px;
+}
+
+.bj-interface form input:disabled{
+    opacity: 0.2;
+}
+
+
+
+
+.card[data-suit="Hearts"][data-name="2"]{
+    background-position: 0px 0px;
+}.card[data-suit="Hearts"][data-name="3"]{
+    background-position: -95px 0px;
+}.card[data-suit="Hearts"][data-name="4"]{
+    background-position: -191px 0px;
+}.card[data-suit="Hearts"][data-name="5"]{
+    background-position: -288px 0px;
+}.card[data-suit="Hearts"][data-name="6"]{
+    background-position: -384px 0px;
+}.card[data-suit="Hearts"][data-name="7"]{
+    background-position: -480px 0px;
+}.card[data-suit="Hearts"][data-name="8"]{
+    background-position: -576px 0px;
+}.card[data-suit="Hearts"][data-name="9"]{
+    background-position: -672px 0px;
+}.card[data-suit="Hearts"][data-name="10"]{
+    background-position: -768px 0px;
+}.card[data-suit="Hearts"][data-name="J"]{
+    background-position: -864px 0px;
+}.card[data-suit="Hearts"][data-name="Q"]{
+    background-position: -960px 0px;
+}.card[data-suit="Hearts"][data-name="K"]{
+    background-position: -1056px 0px;
+}.card[data-suit="Hearts"][data-name="A"]{
+    background-position: -1153px 0px;
+}.card[data-suit="Diamonds"][data-name="2"]{
+    background-position: 0px -139px;
+}.card[data-suit="Diamonds"][data-name="3"]{
+    background-position: -95px -139px;
+}.card[data-suit="Diamonds"][data-name="4"]{
+    background-position: -191px -139px;
+}.card[data-suit="Diamonds"][data-name="5"]{
+    background-position: -288px -139px;
+}.card[data-suit="Diamonds"][data-name="6"]{
+    background-position: -384px -139px;
+}.card[data-suit="Diamonds"][data-name="7"]{
+    background-position: -480px -139px;
+}.card[data-suit="Diamonds"][data-name="8"]{
+    background-position: -576px -139px;
+}.card[data-suit="Diamonds"][data-name="9"]{
+    background-position: -672px -139px;
+}.card[data-suit="Diamonds"][data-name="10"]{
+    background-position: -768px -139px;
+}.card[data-suit="Diamonds"][data-name="J"]{
+    background-position: -864px -139px;
+}.card[data-suit="Diamonds"][data-name="Q"]{
+    background-position: -960px -139px;
+}.card[data-suit="Diamonds"][data-name="K"]{
+    background-position: -1056px -139px;
+}.card[data-suit="Diamonds"][data-name="A"]{
+    background-position: -1153px -139px;
+}.card[data-suit="Clubs"][data-name="2"]{
+    background-position: 0px -278px;
+}.card[data-suit="Clubs"][data-name="3"]{
+    background-position: -95px -278px;
+}.card[data-suit="Clubs"][data-name="4"]{
+    background-position: -191px -278px;
+}.card[data-suit="Clubs"][data-name="5"]{
+    background-position: -288px -278px;
+}.card[data-suit="Clubs"][data-name="6"]{
+    background-position: -384px -278px;
+}.card[data-suit="Clubs"][data-name="7"]{
+    background-position: -480px -278px;
+}.card[data-suit="Clubs"][data-name="8"]{
+    background-position: -576px -278px;
+}.card[data-suit="Clubs"][data-name="9"]{
+    background-position: -672px -278px;
+}.card[data-suit="Clubs"][data-name="10"]{
+    background-position: -768px -278px;
+}.card[data-suit="Clubs"][data-name="J"]{
+    background-position: -864px -278px;
+}.card[data-suit="Clubs"][data-name="Q"]{
+    background-position: -960px -278px;
+}.card[data-suit="Clubs"][data-name="K"]{
+    background-position: -1056px -278px;
+}.card[data-suit="Clubs"][data-name="A"]{
+    background-position: -1153px -278px;
+}.card[data-suit="Spades"][data-name="2"]{
+    background-position: 0px -418px;
+}.card[data-suit="Spades"][data-name="3"]{
+    background-position: -95px -418px;
+}.card[data-suit="Spades"][data-name="4"]{
+    background-position: -191px -418px;
+}.card[data-suit="Spades"][data-name="5"]{
+    background-position: -288px -418px;
+}.card[data-suit="Spades"][data-name="6"]{
+    background-position: -384px -418px;
+}.card[data-suit="Spades"][data-name="7"]{
+    background-position: -480px -418px;
+}.card[data-suit="Spades"][data-name="8"]{
+    background-position: -576px -418px;
+}.card[data-suit="Spades"][data-name="9"]{
+    background-position: -672px -418px;
+}.card[data-suit="Spades"][data-name="10"]{
+    background-position: -768px -418px;
+}.card[data-suit="Spades"][data-name="J"]{
+    background-position: -864px -418px;
+}.card[data-suit="Spades"][data-name="Q"]{
+    background-position: -960px -418px;
+}.card[data-suit="Spades"][data-name="K"]{
+    background-position: -1056px -418px;
+}.card[data-suit="Spades"][data-name="A"]{
+    background-position: -1153px -418px;
 }

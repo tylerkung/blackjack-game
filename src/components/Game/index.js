@@ -25,6 +25,7 @@ class Game extends Component {
             bet: 0,
             bankroll: 1000,
             doubleEligible: true,
+            splitEligible: false,
             playerAction: false,
             result: ''
         }
@@ -243,10 +244,12 @@ class Game extends Component {
 
     render(){
         return (
-            <div className={(this.state.playerAction ? 'player-turn' : '')}>
+            <div className={"bj-game " + (this.state.playerAction ? 'player-turn' : '')}>
                 <Hand hand={this.state.dealer.hand} dealer/>
                 <Hand hand={this.state.player.hand} />
-                {this.state.result}
+                <div className="result">
+                    {this.state.result}
+                </div>
                 <Interface
                     deal={this.dealGame}
                     hit={this.hit}
