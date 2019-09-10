@@ -24,6 +24,7 @@ class Game extends Component {
             },
             bet: 0,
             bankroll: 1000,
+            doubleEligible: true,
             playerAction: false,
             result: ''
         }
@@ -33,6 +34,7 @@ class Game extends Component {
         this.dealer = this.dealer.bind(this);
         this.stay = this.stay.bind(this);
         this.hit = this.hit.bind(this);
+        this.double = this.double.bind(this);
         this.gameReset = this.gameReset.bind(this);
         this.evaluate = this.evaluate.bind(this);
         this.betChange = this.betChange.bind(this);
@@ -127,7 +129,8 @@ class Game extends Component {
                 hand: playerHand.hand,
                 value: playerValue,
                 ace: playerAces
-            }
+            },
+            doubleEligible: false
         });
 
         if (playerValue > 21){
@@ -140,6 +143,15 @@ class Game extends Component {
     stay(){
         this.setState({playerAction: false});
         this.dealer();
+    }
+
+    double(){
+        this.setState({
+            bet: this.state.bet * 2,
+            doubleEligible: false
+        });
+        this.hit();
+        this.stay();
     }
 
     dealer(){
@@ -167,11 +179,10 @@ class Game extends Component {
         if (dealerHand.value > 21){
             this.setState({result: "Win!"});
             this.win();
-            this.gameReset();
         } else{
             this.evaluate();
-            this.gameReset();
         }
+        this.gameReset();
     }
 
     dealCard(player){
@@ -206,7 +217,8 @@ class Game extends Component {
 
     gameReset(){
         this.setState({
-            playerAction: false
+            playerAction: false,
+            doubleEligible: true
         });
     }
 
@@ -239,10 +251,12 @@ class Game extends Component {
                     deal={this.dealGame}
                     hit={this.hit}
                     stay={this.stay}
+                    double={this.double}
                     gameActive={this.state.playerAction}
                     betChange={this.betChange}
                     bet={this.state.bet}
                     bankroll={this.state.bankroll}
+                    doubleEligible={this.state.doubleEligible}
                 />
             </div>
         );
