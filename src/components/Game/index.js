@@ -55,7 +55,7 @@ class Game extends Component {
             this.setState({result: "Minimum bet is 10"});
             return;
         }
-        if (!this.state.deck){
+        if (!this.state.deck || this.state.deck.count < 20){
             this.shuffleDeck();
         }
         var playerHand = [];

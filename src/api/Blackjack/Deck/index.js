@@ -27,7 +27,14 @@ export default class Deck{
         return this._deck;
     }
     set deck(n) {
-        this._value = n;
+        this._deck = n;
+    }
+
+    get count() {
+        return this._count;
+    }
+    set count(n) {
+        this._count = n;
     }
 
     deal() {
