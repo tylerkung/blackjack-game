@@ -22,6 +22,10 @@ class Interface extends Component {
                 <button onClick={this.props.deal} disabled={this.state.gameActive}>Deal</button>
                 <button onClick={this.props.stay} disabled={!this.state.gameActive}>Stay</button>
                 <button onClick={this.props.hit} disabled={!this.state.gameActive}>Hit</button>
+                <form action="">
+                    <input type="number" name="bet" value={this.props.bet} onChange={this.props.betChange} disabled={this.state.gameActive} />
+                    Bankroll: ${this.props.bankroll}
+                </form>
             </div>
         );
     }

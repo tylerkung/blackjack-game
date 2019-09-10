@@ -22,6 +22,8 @@ class Game extends Component {
                 value: 0,
                 win: false
             },
+            bet: 0,
+            bankroll: 1000,
             playerAction: false,
             result: ''
         }
@@ -33,6 +35,11 @@ class Game extends Component {
         this.hit = this.hit.bind(this);
         this.gameReset = this.gameReset.bind(this);
         this.evaluate = this.evaluate.bind(this);
+        this.betChange = this.betChange.bind(this);
+        this.win = this.win.bind(this);
+        this.lose = this.lose.bind(this);
+        this.push = this.push.bind(this);
+        this.blackjackWin = this.blackjackWin.bind(this);
     }
 
     shuffleDeck(){
@@ -40,6 +47,10 @@ class Game extends Component {
     }
 
     dealGame(){
+        if (this.state.bet < 10){
+            alert("Minimum bet is $10");
+            return;
+        }
         if (!this.state.deck){
             this.shuffleDeck();
         }
@@ -74,10 +85,12 @@ class Game extends Component {
                 result = 'Push!';
             } else{
                 result = 'Blackjack!';
+                this.blackjackWin();
             }
             playerAction = false;
         } else if (dealerValue === 21){
             result = 'Lose!';
+            this.lose();
             playerAction = false;
         }
 
@@ -119,6 +132,7 @@ class Game extends Component {
 
         if (playerValue > 21){
             this.setState({result: "Lose!"});
+            this.lose();
             this.gameReset();
         }
     }
@@ -152,6 +166,7 @@ class Game extends Component {
 
         if (dealerHand.value > 21){
             this.setState({result: "Win!"});
+            this.win();
             this.gameReset();
         } else{
             this.evaluate();
@@ -165,7 +180,6 @@ class Game extends Component {
         player.value += card.value; //update value
         if (card.name === 'A'){ //check Ace
             player.ace++;
-            console.log(player.ace);
         }
         if (player.value > 21 && player.ace > 0){ //validate 11 or 1 ace
             player.value -= 10;
@@ -177,19 +191,42 @@ class Game extends Component {
     evaluate(){ //if not bust
         var player = this.state.player.value;
         var dealer = this.state.dealer.value;
+        var result = '';
         if (player > dealer){
-            this.setState({result: "Win!"});
+            result = 'Win!';
+            this.win();
         } else if (dealer > player){
-            this.setState({result: "Lose!"});
+            result = 'Lose!';
+            this.lose();
         } else if (dealer === player){
-            this.setState({result: "Tie!"});
+            result = 'Tie!';
         }
+        this.setState({result});
     }
 
     gameReset(){
         this.setState({
             playerAction: false
         });
+    }
+
+    betChange(e){
+        this.setState({bet: parseInt(e.target.value)});
+    }
+
+    win(){
+        var add = this.state.bankroll + this.state.bet;
+        this.setState({bankroll: add})
+    }
+    lose(){
+        this.setState({bankroll: (this.state.bankroll - this.state.bet)})
+    }
+    push(){
+
+    }
+    blackjackWin(){
+        var win = this.state.bet * 1.5;
+        this.setState({bankroll: this.state.bankroll + win});
     }
 
     render(){
@@ -203,6 +240,9 @@ class Game extends Component {
                     hit={this.hit}
                     stay={this.stay}
                     gameActive={this.state.playerAction}
+                    betChange={this.betChange}
+                    bet={this.state.bet}
+                    bankroll={this.state.bankroll}
                 />
             </div>
         );
