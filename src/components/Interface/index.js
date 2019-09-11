@@ -6,7 +6,8 @@ class Interface extends Component {
 
         this.state = {
             gameActive: false,
-            doubleEligible: true
+            doubleEligible: true,
+            dealEligible: true
         }
     }
 
@@ -16,6 +17,9 @@ class Interface extends Component {
         }
         if (props.doubleEligible !== state.doubleEligible){
             state.doubleEligible = props.doubleEligible;
+        }
+        if (props.dealEligible !== state.dealEligible){
+            state.dealEligible = props.dealEligible;
         }
         return state;
     }
@@ -33,7 +37,7 @@ class Interface extends Component {
                 </form>
                 </div>
                 <div className="bj-buttons">
-                    <button className="btn btn-deal" onClick={this.props.deal} disabled={this.state.gameActive}>Deal</button>
+                    <button className="btn btn-deal" onClick={this.props.deal} disabled={!this.state.dealEligible}>Deal</button>
                     <button className="btn btn-stay" onClick={this.props.stay} disabled={!this.state.gameActive}>Stay</button>
                     <button className="btn btn-hit" onClick={this.props.hit} disabled={!this.state.gameActive}>Hit</button>
                     <button className="btn btn-double" onClick={this.props.double} disabled={!this.state.gameActive || !this.state.doubleEligible}>Double</button>

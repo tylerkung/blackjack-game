@@ -28,6 +28,7 @@ class Game extends Component {
             doubleEligible: true,
             splitEligible: false,
             playerAction: false,
+            dealEligible: true,
             result: ''
         }
         this.shuffleDeck = this.shuffleDeck.bind(this);
@@ -111,7 +112,8 @@ class Game extends Component {
                 ace: dealerAce
             },
             playerAction,
-            result
+            result,
+            dealEligible: false
         })
     }
 
@@ -226,7 +228,8 @@ class Game extends Component {
     gameReset(){
         this.setState({
             playerAction: false,
-            doubleEligible: true
+            doubleEligible: true,
+            dealEligible: true
         });
     }
 
@@ -267,6 +270,7 @@ class Game extends Component {
                     bet={this.state.bet}
                     bankroll={this.state.bankroll}
                     doubleEligible={this.state.doubleEligible}
+                    dealEligible={this.state.dealEligible}
                 />
             </div>
         );
