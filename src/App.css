@@ -77,8 +77,13 @@ button:focus, input:focus{
 .bj-interface{
     max-width: 100%;
     display: flex;
+    flex-direction: column;
     bottom: 0;
-    padding: 60px 50px 40px;
+}
+
+.bj-interface .bj-buttons{
+    display: flex;
+    padding: 60px 50px;
     margin-bottom: 100px;
     justify-content: space-between;
     flex-wrap: wrap;
