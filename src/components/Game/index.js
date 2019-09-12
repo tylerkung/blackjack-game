@@ -68,6 +68,7 @@ class Game extends Component {
         var i = 0;
         var playerAction = true;
         var result = '';
+        var dealEligible = false;
 
         while (i < 2){
             var playerCard = this.state.deck.deal();
@@ -93,10 +94,12 @@ class Game extends Component {
                 this.blackjackWin();
             }
             playerAction = false;
+            dealEligible = true;
         } else if (dealerValue === 21){
             result = 'Lose!';
             this.lose();
             playerAction = false;
+            dealEligible = true;
         }
 
 
@@ -113,7 +116,7 @@ class Game extends Component {
             },
             playerAction,
             result,
-            dealEligible: false
+            dealEligible
         })
     }
 
