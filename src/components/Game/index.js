@@ -232,7 +232,8 @@ class Game extends Component {
         this.setState({
             playerAction: false,
             doubleEligible: true,
-            dealEligible: true
+            dealEligible: true,
+            double: 1
         });
     }
 
