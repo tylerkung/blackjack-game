@@ -27,7 +27,6 @@ class Interface extends Component {
     render(){
         return (
             <div className="bj-interface">
-            Bankroll: ${this.props.bankroll}
                 <div className="bj-wager">
                 <form action="" onSubmit={(e) => {
                     e.preventDefault();
@@ -37,6 +36,9 @@ class Interface extends Component {
                 </form>
                 </div>
                 <div className="bj-buttons">
+                    <div className="bj-bankroll">
+                        ${this.props.bankroll}
+                    </div>
                     <button className="btn btn-deal" onClick={this.props.deal} disabled={!this.state.dealEligible}>Deal</button>
                     <button className="btn btn-stay" onClick={this.props.stay} disabled={!this.state.gameActive}>Stay</button>
                     <button className="btn btn-hit" onClick={this.props.hit} disabled={!this.state.gameActive}>Hit</button>

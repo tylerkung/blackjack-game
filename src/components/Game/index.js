@@ -53,7 +53,7 @@ class Game extends Component {
 
     dealGame(){
         if (this.state.bet < 10){
-            this.setState({result: "Minimum bet is 10"});
+            this.setState({result: "Minimum bet is $10"});
             return;
         }
         if (!this.state.deck || this.state.deck.count < 20){
